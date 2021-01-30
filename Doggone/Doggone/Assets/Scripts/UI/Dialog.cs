@@ -1,9 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DefaultNamespace.UI
+namespace UI
 {
     public class Dialog : MonoBehaviour
     {
@@ -16,14 +15,14 @@ namespace DefaultNamespace.UI
         private string[] _dialog;
         private int _index;
         private static Dialog _instance;
-        private GameObject _result;
+        private GameObject[] _result;
 
         private void Awake()
         {
             _instance = this;
         }
 
-        public void SetDialog(string[] lines, GameObject result)
+        public void SetDialog(string[] lines, GameObject[] result)
         {
             _dialog = lines;
             _index = 0;
@@ -36,22 +35,31 @@ namespace DefaultNamespace.UI
 
         public void ShowNextLine()
         {
-            if (_dialog.Length == _index + 1)
+            if (_dialog.Length == _index)
             {
                 ToSwap.sprite = WithoutArrow;
                 NextButton.SetActive(false);
+                Text.text = "";
 
                 if (_result != null)
                 {
-                    _result.SetActive(true);
+                    foreach (var o in _result)
+                    {
+                        o.SetActive(true);
+                        
+                    }
+
                 }
             }
+            else
+            {
 
-            Text.text = _dialog[_index];
-            _index++;
+                Text.text = _dialog[_index];
+                _index++;
+            }
         }
 
-        public static void Add(string[] storyLines, GameObject gameObject)
+        public static void Add(string[] storyLines, GameObject[] gameObject)
         {
             _instance.SetDialog(storyLines, gameObject);
         }

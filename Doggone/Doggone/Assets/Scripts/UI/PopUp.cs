@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PopUp : MonoBehaviour
+namespace UI
 {
-    private Vector3 _scale;
-
-    private void Awake()
+    public class PopUp : MonoBehaviour
     {
-        _scale = transform.localScale;
-    }
+        private Vector3 _scale;
+
+        private void Awake()
+        {
+            _scale = transform.localScale;
+        }
     
 
-    public void HoveOn()
-    {
-        transform.localScale = _scale * 1.5f;
-    }
+        public void HoveOn()
+        {
+            transform.localScale = _scale * 1.5f;
+        }
     
     
-    public void HoveOff() {
-        transform.localScale = _scale;
-    }
+        public void HoveOff() {
+            transform.localScale = _scale;
+        }
      
+    }
 }

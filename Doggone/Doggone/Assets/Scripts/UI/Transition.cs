@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Transition : MonoBehaviour
+namespace UI
 {
-    public GameObject NextScreen;
-    public void Go()
+    public class Transition : MonoBehaviour
     {
-        GameTracker.GoToScreen(NextScreen);
+        public GameObject NextScreen;
+        public void Go()
+        {
+            GameTracker.GoToScreen(NextScreen);
+        }
     }
 }
